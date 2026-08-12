@@ -69,5 +69,10 @@ const createOrder = async (req, res) => {
   }
 };
 
+const getOrders = async (req, res) => {
+  const result = await pool.query('SELECT * FROM orders ORDER BY created_at DESC');
+  res.json(result.rows);
+};
 
-module.exports = { createOrder };
+
+module.exports = { createOrder, getOrders };

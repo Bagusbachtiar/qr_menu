@@ -24,6 +24,9 @@ app.get('/api/admin/test', protect ,(req, res) => {
     res.json({message: 'You are authenticated', user: req.user });
 });
 
+const errorHandler = require('./middleware/errorHandler');
+app.use(errorHandler);
+
 app.listen(3000, () => {
     console.log('server running on http://localhost:3000');
 });

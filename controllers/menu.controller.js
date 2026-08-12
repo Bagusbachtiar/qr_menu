@@ -1,7 +1,12 @@
 const pool = require('../config/db');
 
+
 const createMenuItem = async (req, res) => {
     const { name, price, description, category, available } = req.body;
+
+    if (!name || !price ){
+    return res.status(400).json({ error: 'Name and price are required'});
+    }
 
     const result = await pool.query(
         'INSERT INTO menu_items (name, price, description, category, available) VALUES ($1, $2, $3, $4, $5) RETURNING *',

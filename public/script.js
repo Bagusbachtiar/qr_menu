@@ -7,11 +7,16 @@ async function loadMenu(){
 
     const menuList = document.getElementById('menu-list');
     menuList.innerHTML = menuItems.map(item => `
-        <div>
-        ${item.name} - $${item.price}
-        <button onclick="addToCart(${item.id})"> add</button>
+        <div class="menu-item">
+          <div class="menu-item-info">
+            <h3>${item.name}</h3>
+            <p class="menu-item-desc">${item.description || ''}</p>
+            <span class="menu-item-price">$${item.price}</span>
+          </div>
+          <button class="btn-add" onclick="addToCart(${item.id})">Add</button>
         </div>
     `).join('');
+
 }
 
 function addToCart(id) {
@@ -30,11 +35,13 @@ function addToCart(id) {
 function renderCart() {
   const cartList = document.getElementById('cart-list');
   cartList.innerHTML = cart.map(c => `
-    <div>
-      ${c.name} x${c.qty} - $${(c.price * c.qty).toFixed(2)}
-      <button onclick="removeFromCart(${c.id})">Remove</button>
+    <div class="cart-item">
+      <span>${c.name} x${c.qty}</span>
+      <span>$${(c.price * c.qty).toFixed(2)}</span>
+      <button class="btn-remove" onclick="removeFromCart(${c.id})">×</button>
     </div>
-  `).join('');
+`).join('');
+
 
     const total = cart.reduce((sum, c) => sum + c.price * c.qty, 0);
   document.getElementById('cart-total').textContent = total.toFixed(2);

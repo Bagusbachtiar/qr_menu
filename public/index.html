@@ -3,15 +3,20 @@
 <head>
   <meta charset="UTF-8">
   <title>Menu</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <h1>Menu</h1>
-  <div id="menu-list"></div>
+  <div class="container">
+    <h1>Menu</h1>
+    <div id="menu-list" class="menu-grid"></div>
 
-  <h2>Cart</h2>
-  <div id="cart-list"></div>
-  <p>Total: $<span id="cart-total">0.00</span></p>
-  <button onclick="checkout()">Checkout</button>
+    <div class="cart">
+      <h2>Cart</h2>
+      <div id="cart-list"></div>
+      <p class="cart-total">Total: $<span id="cart-total">0.00</span></p>
+      <button class="btn-checkout" onclick="checkout()">Checkout</button>
+    </div>
+  </div>
 
   <script src="script.js"></script>
 </body>
